@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海报</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+    }
+    #poster {
+        width: 600px;
+        height: 800px;
+        background-image: url('image2.jpg'); /* 背景图 */
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin: 20px auto;
+        position: relative;
+        overflow: hidden;
+    }
+    #title {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    #content {
+        font-size: 18px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    #images {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+    .image {
+        width: 180px;
+        height: 180px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #qr-code {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    #wechat-scan {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 140px;
+        height: 140px;
+        background-image: url('wechat-scan-icon.png');
+        background-size: cover;
+        cursor: pointer;
+    }
+    #seckill {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: #fff;
+        background-color: #f44336;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+
+<div id="poster">
+    <h1 id="title">私人订制</h1>
+    <p id="content">米莱小院品牌授权店               护肤 养生 头疗</p>
+    <div id="images">
+        <div class="image" style="background-color: #ffcccc;">
+            <img src="image1.jpg" alt="Image 1">
+        </div>
+        <div class="image" style="background-color: #ccffcc;">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+        <div class="image" style="background-color: #ccccff;">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+    </div>
+    <img id="qr-code" src="your-qr-code-image.jpg" alt="QR Code">
+    <div id="wechat-scan"></div>
+    <div id="seckill">秒杀价29.9元</div>
+</div>
+
+<script>
+    // 更新海报内容
+    function updatePoster() {
+        var title = document.getElementById("title").innerText;
+        var content = document.getElementById("content").innerText;
+        document.getElementById("title").innerText = title;
+        document.getElementById("content").innerText = content;
+    }
+
+    // 长按显示微信扫一扫
+    var wechatScan = document.getElementById("wechat-scan");
+    wechatScan.addEventListener("touchstart", function(event) {
+        var timeout = setTimeout(function() {
+            alert("长按识别图中二维码");
+        }, 1000); // 设置长按时间阈值
+        wechatScan.addEventListener("touchend", function(event) {
+            clearTimeout(timeout);
+        });
+    });
+    
+    // 初始化
+    updatePoster();
+</script>
+
+</body>
+</html>
